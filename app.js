@@ -102,10 +102,10 @@ const validateRegistration = (req, res, next) => {
 //******** TODO: Integrate validateRegistration into the register route. ********//
 app.post('/register', validateRegistration, (req, res) => {
     //******** TODO: Update register route to include role. ********//
-    const { username, email, password, address, contact, role } = req.body;
+    const { username, email, password, address, contact, role} = req.body;
 
-    const sql = 'INSERT INTO users (username, email, password, address, contact, role) VALUES (?, ?, SHA1(?), ?, ?)';
-    db.query(sql, [username, email, password, address, contact, role], (err, result) => {
+    const sql = 'INSERT INTO users (username, email, password, address, contact) VALUES (?, ?, SHA1(?), ?, ?)';
+    db.query(sql, [username, email, password, address, contact,'user'], (err, result) => {
         if (err) {
             throw err;
         }
